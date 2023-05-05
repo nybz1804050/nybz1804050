@@ -1,0 +1,159 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 700px;
+            height: 550;
+            border: solid 3px #000033;
+            border-collapse: collapse;
+            text-align: center;
+            margin: 10px auto;
+        }
+        td {
+            border: solid 2px #000;
+            height: 30px;
+        }
+        tr:nth-of-type(odd) {
+            background-color: rgb(255, 254, 203);
+        }
+        tr:nth-of-type(even) {
+            background-color: rgb(204, 255, 154);
+        }
+        tr:hover{
+            background-color: rgb(51, 255, 254);
+            border:1px ;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <td style=" color: red; background-color: rgb(203, 203, 203) ;">图书</td>
+            <td style=" color: red; background-color: rgb(203, 203, 203) ;">出版社</td>
+            <td style=" color: red; background-color: rgb(203, 203, 203) ;">出版日期</td>
+            <td style=" color: red; background-color: rgb(203, 203, 203) ;">价格</td>
+        </thead>
+        <tr>
+            <td>C++程序设计</td>
+            <td>清华大学出版社</td>
+            <td>2016.1</td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td>Java程序设计</td>
+            <td>人民邮电出版社</td>
+            <td>2017.6</td>
+            <td>43</td>
+        </tr>
+        <tr>
+            <td>HTML5+CSS3网页设计开发教程</td>
+            <td>清华大学出版社</td>
+            <td>2018.9</td>
+            <td>39</td>
+        </tr>
+        <tr>
+            <td>ASPNET应用开发</td>
+            <td>机械工业出版社</td>
+            <td>2015.10</td>
+            <td>54</td>
+        </tr>
+        <tr>
+            <td>C++程序设计</td>
+            <td>清华大学出版社</td>
+            <td>2016.1</td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td>Java程序设计</td>
+            <td>人民邮电出版社</td>
+            <td>2017.6</td>
+            <td>43</td>
+        </tr>
+        <tr>
+            <td>HTML5+CSS3网页设计开发教程</td>
+            <td>清华大学出版社</td>
+            <td>2018.9</td>
+            <td>39</td>
+        </tr>
+        <tr>
+            <td>ASPNET应用开发</td>
+            <td>机械工业出版社</td>
+            <td>2015.10</td>
+            <td>54</td>
+        </tr>
+        <tr>
+            <td>C++程序设计</td>
+            <td>清华大学出版社</td>
+            <td>2016.1</td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td>Java程序设计</td>
+            <td>人民邮电出版社</td>
+            <td>2017.6</td>
+            <td>43</td>
+        </tr>
+        <tr>
+            <td>HTML5+CSS3网页设计开发教程</td>
+            <td>清华大学出版社</td>
+            <td>2018.9</td>
+            <td>39</td>
+        </tr>
+        <tr>
+            <td>ASPNET应用开发</td>
+            <td>机械工业出版社</td>
+            <td>2015.10</td>
+            <td>54</td>
+        </tr>
+    </table>
+</body>
+</html>
